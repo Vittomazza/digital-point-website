@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Server, Shield, Code, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { mockData } from '../mockData';
-import { useState, useEffect } from "react";
+
 
 export const HeroSection = () => {
   const scrollToSection = (sectionId) => {
