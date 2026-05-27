@@ -70,7 +70,7 @@ export const HeroSection = () => {
                 onClick={() => scrollToSection('contatti')}
                 size="lg"
                 variant="outline"
-                className="border-2 border-slate-300 text-slate-700 hover:bg-slate-100 px-8 py-6 text-lg transition-all duration-200 hover:shadow-lg"
+                className="border-2 border-slate-300 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 px-8 py-6 text-lg transition-all duration-200 hover:shadow-lg hover:scale-105"
               >
                 Contattaci
               </Button>
