@@ -82,3 +82,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Glassmorphism enhancements */
+@supports (backdrop-filter: blur(1px)) {
+  .glass {
+    transition: all 0.3s ease;
+  }
+  
+  .glass:hover {
+    @apply bg-white/40 dark:bg-white/15;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  }
+
+  .glass-light:hover {
+    @apply bg-white/50 dark:bg-white/30;
+  }
+
+  .glass-dark:hover {
+    @apply bg-white/15 dark:bg-black/40;
+  }
+
+  .glass-sm:hover {
+    @apply bg-white/30 dark:bg-white/10;
+  }
+}
