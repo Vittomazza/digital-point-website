@@ -18,6 +18,9 @@ function App() {
       <div className="App">
         <CustomCursor />
         <Header />
+
+        <ScrollToTop />
+
         <Routes>
           <Route
             path="/"
@@ -32,6 +35,7 @@ function App() {
           />
           <Route path="/servizi" element={<ServicesPage />} />
         </Routes>
+
         <Footer />
         <Toaster />
       </div>
