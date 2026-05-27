@@ -134,22 +134,7 @@ export const HeroSection = () => {
               </motion.div>
             ))}
 
-            {/* Connecting Lines */}
-            <svg className="absolute inset-0 w-full h-full" style={{ zIndex: -1 }}>
-              <motion.line
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 2, delay: 1 }}
-                x1="50%"
-                y1="50%"
-                x2="30%"
-                y2="35%"
-                stroke="#3b82f6"
-                strokeWidth="2"
-                strokeDasharray="5,5"
-                opacity="0.3"
-              />
-            </svg>
+            
           </motion.div>
         </div>
       </div>
@@ -171,3 +156,4 @@ export const HeroSection = () => {
     </section>
   );
 };
+
