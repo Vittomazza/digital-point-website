@@ -3,6 +3,16 @@ import { motion } from 'framer-motion';
 import { Server, Shield, Code, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { mockData } from '../mockData';
+import { useState, useEffect } from "react";
+
+useEffect(() => {
+  const checkMobile = () => setIsMobile(window.innerWidth < 768);
+
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+
+  return () => window.removeEventListener("resize", checkMobile);
+}, []);
 
 export const HeroSection = () => {
   const scrollToSection = (sectionId) => {
