@@ -10,6 +10,7 @@ import { Footer } from "./components/Footer";
 import { Toaster } from "sonner";
 import { ServicesPage } from "./pages/ServicesPage";
 import { CustomCursor } from "./components/CustomCursor";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
