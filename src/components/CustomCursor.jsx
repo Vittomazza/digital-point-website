@@ -6,30 +6,30 @@ export const CustomCursor = () => {
 
   return (
     <>
-      {/* Cursore principale */}
+      {/* Cursore principale (cerchio grande) */}
       <div
         ref={cursorRef}
-        className="fixed w-8 h-8 border-2 border-blue-500 rounded-full pointer-events-none z-[9999] opacity-0 transition-all duration-200"
+        className="fixed w-8 h-8 border-2 border-blue-500 rounded-full pointer-events-none z-[9999] opacity-0 transition-opacity duration-300"
         style={{
           transform: 'translate(-50%, -50%)',
-          mixBlendMode: 'difference',
-          boxShadow: '0 0 10px rgba(59, 130, 246, 0.4)',
+          mixBlendMode: 'multiply',
+          boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)',
         }}
       />
-
-      {/* Punto centrale */}
+      {/* Punto del cursore (cerchio piccolo) */}
       <div
         ref={cursorDotRef}
-        className="fixed w-2 h-2 bg-blue-500 rounded-full pointer-events-none z-[9999] opacity-0 transition-all duration-200"
+        className="fixed w-2 h-2 bg-blue-500 rounded-full pointer-events-none z-[9999] opacity-0 transition-opacity duration-300"
         style={{
           transform: 'translate(-50%, -50%)',
-          mixBlendMode: 'difference',
         }}
       />
-
-      {/* Nasconde cursore default */}
+      {/* Nascondi il cursore di default */}
       <style>{`
         * {
+          cursor: none !important;
+        }
+        a, button, input, textarea, select {
           cursor: none !important;
         }
       `}</style>
