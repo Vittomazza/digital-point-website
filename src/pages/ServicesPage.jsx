@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { mockData } from '../mockData';
 import { CheckCircle, Server, Monitor, Printer, Phone, Briefcase, LayoutDashboard, ShieldCheck, Globe, Building2, Recycle, Fingerprint, LifeBuoy } from 'lucide-react';
+import { Card } from '../components/ui/card';
 
 const iconMap = {
   'life-buoy': LifeBuoy,
@@ -42,6 +43,72 @@ export const ServicesPage = () => {
 
       <section className="py-16 md:py-24 bg-slate-50">
         <div className="container mx-auto px-4">
+          {/* Glass Cards Showcase Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-20"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 text-center">
+              Perché scegliere <span className="text-blue-600">Digital Point</span>
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Affidabilità",
+                  description: "Servizi IT stabili e continuativi per la tua azienda, 24/7.",
+                  icon: "🛡️"
+                },
+                {
+                  title: "Innovazione",
+                  description: "Soluzioni tecnologiche moderne e all'avanguardia.",
+                  icon: "⚡"
+                },
+                {
+                  title: "Supporto",
+                  description: "Team esperto sempre pronto ad aiutare il tuo business.",
+                  icon: "🤝"
+                }
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card variant="glass" className="h-full p-8 rounded-2xl glass-glow hover:scale-105 transition-all duration-300">
+                    <div className="text-5xl mb-4">{item.icon}</div>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-600">
+                      {item.description}
+                    </p>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Detailed Services List */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-16"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 text-center">
+              Tutti i <span className="text-blue-600">Servizi</span>
+            </h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto mb-12"></div>
+          </motion.div>
+
           {mockData.services.map((service, index) => {
             const ServiceIcon = iconMap[service.icon];
             return (
