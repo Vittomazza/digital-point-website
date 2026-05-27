@@ -84,9 +84,9 @@ const CURSOR_STYLES = {
     mix:  'screen',
   },
   dark: {
-    ring: 'rgba(15, 23, 42, 0.9)',
-    dot:  'rgba(15, 23, 42, 1)',
-    glow: 'rgba(15, 23, 42, 0.2)',
+    ring: 'rgba(59, 130, 246, 0.9)',
+    dot:  'rgba(59, 130, 246, 0.9)',
+    glow: 'rgba(59, 130, 246, 0.9)',
     mix:  'multiply',
   },
   default: {
