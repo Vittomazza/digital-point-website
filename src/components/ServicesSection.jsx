@@ -77,7 +77,7 @@ export const ServicesSection = () => {
                   transition={{ duration: 0.4 }}
                   style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <Card variant="glass" className="h-full p-8 rounded-2xl transition-all duration-300 glass-glow hover:scale-105 relative overflow-hidden">
+                  <Card className="h-full bg-white border-2 border-slate-200 hover:border-blue-400 rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl relative overflow-hidden">
                     {/* Background Gradient on Hover */}
                     <motion.div
                       initial={{ opacity: 0 }}
