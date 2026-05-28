@@ -149,17 +149,29 @@ export const Footer = () => {
           className="border-t border-slate-800 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-slate-500 text-sm">
-              © {currentYear} Digital Point. Tutti i diritti riservati.
-            </p>
+  <p className="text-slate-500 text-sm">
+    © {currentYear} Digital Point. Tutti i diritti riservati.
+  </p>
+
             <div className="flex space-x-6">
-              <button className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200">
+              <button
+                onClick={() => navigate('/privacy')}
+                className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200"
+              >
                 Privacy Policy
               </button>
-              <button className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200">
+
+              <button
+                onClick={() => navigate('/cookie')}
+                className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200"
+              >
                 Cookie Policy
               </button>
-              <button className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200">
+
+              <button
+                onClick={() => navigate('/termini')}
+                className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200"
+              >
                 Termini di Servizio
               </button>
             </div>
