@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -16,55 +16,34 @@ import ScrollToTop from "./components/ScrollToTop";
 import { CookieBanner } from "./components/CookieBanner";
 import { Toaster } from "sonner";
 
-function AppContent() {
-  const location = useLocation();
-
-  useEffect(() => {
-    const id = location.state?.scrollTo;
-    console.log('location state:', location.state);
-    console.log('scrollTo id:', id);
-    if (id) {
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        console.log('elemento trovato:', el);
-        el?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
-    }
-  }, [location]);
-
-  return (
-    <div className="App">
-      <CustomCursor />
-      <Header />
-      <ScrollToTop />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <main>
-              <HeroSection />
-              <AboutSection />
-              <ServicesSection />
-              <ContactSection />
-            </main>
-          }
-        />
-        <Route path="/servizi" element={<ServicesPage />} />
-        <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/cookie" element={<CookiePolicy />} />
-        <Route path="/termini" element={<Terms />} />
-      </Routes>
-      <Footer />
-      <CookieBanner />
-      <Toaster />
-    </div>
-  );
-}
-
 export default function App() {
   return (
     <Router>
-      <AppContent />
+      <div className="App">
+        <CustomCursor />
+        <Header />
+        <ScrollToTop />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <main>
+                <HeroSection />
+                <AboutSection />
+                <ServicesSection />
+                <ContactSection />
+              </main>
+            }
+          />
+          <Route path="/servizi" element={<ServicesPage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/cookie" element={<CookiePolicy />} />
+          <Route path="/termini" element={<Terms />} />
+        </Routes>
+        <Footer />
+        <CookieBanner />
+        <Toaster />
+      </div>
     </Router>
   );
-}
+}   
