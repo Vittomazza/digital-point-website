@@ -59,6 +59,7 @@ const BackgroundVisuals = () => (
 
 export const ServicesPage = () => {
   const navigate = useNavigate();
+  const [activeService, setActiveService] = React.useState(null);
 
   const handleContactClick = () => {
     sessionStorage.setItem("scrollTo", "contatti");
@@ -66,8 +67,76 @@ export const ServicesPage = () => {
     window.scrollTo(0, 0);
   };
 
+  const scrollToService = (id) => {
+    const el = document.getElementById(`service-${id}`);
+    if (el) {
+      const offset = 100;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = el.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Observe which service is in view
+  React.useEffect(() => {
+    const observers = [];
+    mockData.services.forEach((service) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveService(service.id);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      
+      const el = document.getElementById(`service-${service.id}`);
+      if (el) observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach(o => o.disconnect());
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Floating Side Menu */}
+      <motion.div 
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-3 p-3 bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100"
+      >
+        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2 px-2">Navigation</div>
+        {mockData.services.map((service) => {
+          const Icon = iconMap[service.icon] || Server;
+          const isActive = activeService === service.id;
+          return (
+            <button
+              key={service.id}
+              onClick={() => scrollToService(service.id)}
+              className={`group relative flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-300 ${
+                isActive 
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20 scale-110' 
+                  : 'text-slate-400 hover:bg-slate-50 hover:text-blue-600'
+              }`}
+            >
+              <Icon size={20} className={isActive ? "animate-spin-slow" : ""} />
+              
+              {/* Tooltip */}
+              <div className="absolute left-full ml-4 px-3 py-2 bg-slate-950 text-white text-xs font-bold rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">
+                {service.title}
+                <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-slate-950"></div>
+              </div>
+            </button>
+          );
+        })}
+      </motion.div>
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -126,6 +195,7 @@ export const ServicesPage = () => {
             return (
               <div 
                 key={service.id} 
+                id={`service-${service.id}`}
                 className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-32 mb-40 last:mb-0 ${!isEven ? 'lg:flex-row-reverse' : ''}`}
               >
                 {/* Visual Side */}
