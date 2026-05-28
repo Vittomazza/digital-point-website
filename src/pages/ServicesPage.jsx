@@ -4,7 +4,7 @@ import { mockData } from '../mockData';
 import { 
   CheckCircle, Server, Monitor, Printer, Phone, Briefcase, 
   LayoutDashboard, ShieldCheck, Globe, Building2, Recycle, 
-  Fingerprint, Settings, ArrowRight, MousePointer2, Sparkles
+  Fingerprint, Settings, ArrowRight, Sparkles
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
