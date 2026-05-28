@@ -98,19 +98,11 @@ export const ContactSection = () => {
           {contactInfo.map((info, index) => {
             const Icon = info.icon;
             return (
-              <motion.a
+              <a
                   key={index}
                   href={info.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: index * 0.1,
-                    ease: [0.16, 1, 0.3, 1] 
-                  }}
-                  viewport={{ once: true, margin: "-50px" }}
                   className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-blue-200 group"
                 >
                 <div className="flex items-center mb-6">
@@ -124,18 +116,12 @@ export const ContactSection = () => {
                 <p className="text-slate-600 font-medium group-hover:text-blue-600 transition-colors duration-500 text-lg">
                   {info.value}
                 </p>
-              </motion.a>
+              </a>
             );
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-2xl mx-auto"
-        >
+        <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-2xl mx-auto border border-slate-100">
           <h3 className="text-2xl font-bold text-slate-900 mb-8">
             Inviaci un messaggio
           </h3>
@@ -221,7 +207,7 @@ export const ContactSection = () => {
               )}
             </Button>
           </form>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
