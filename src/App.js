@@ -21,9 +21,13 @@ function AppContent() {
 
   useEffect(() => {
     const id = location.state?.scrollTo;
+    console.log('location state:', location.state);
+    console.log('scrollTo id:', id);
     if (id) {
       setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        const el = document.getElementById(id);
+        console.log('elemento trovato:', el);
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
     }
   }, [location]);
