@@ -15,10 +15,13 @@ import { CustomCursor } from "./components/CustomCursor";
 import ScrollToTop from "./components/ScrollToTop";
 import { CookieBanner } from "./components/CookieBanner";
 import { Toaster } from "sonner";
+import { ScrollToTopButton } from "./components/ScrollToTopButton";
+
 
 export default function App() {
   return (
     <Router>
+      <ScrollToTopButton />
       <div className="App">
         <CustomCursor />
         <Header />
