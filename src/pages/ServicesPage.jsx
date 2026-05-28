@@ -104,7 +104,7 @@ export const ServicesPage = () => {
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-2 lg:left-4 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col gap-0.5 p-1.5 bg-slate-900 shadow-2xl border border-white/10 rounded-xl max-h-[90vh] overflow-y-auto no-scrollbar"
+        className="fixed left-8 top-[40%] -translate-y-1/2 z-[100] hidden md:flex flex-col gap-0.5 p-1.5 bg-slate-900 shadow-2xl border border-white/10 rounded-xl max-h-[80vh] overflow-y-auto no-scrollbar"
       >
         <div className="text-[7px] font-black uppercase tracking-[0.1em] text-blue-400/40 mb-1 text-center pt-1 border-b border-white/5 pb-1">Menu</div>
         {mockData.services.map((service) => {
@@ -114,13 +114,13 @@ export const ServicesPage = () => {
             <button
               key={service.id}
               onClick={() => scrollToService(service.id)}
-              className={`group relative flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-200 shrink-0 ${
+              className={`group relative flex items-center justify-center w-7 h-7 rounded-lg transition-all duration-200 shrink-0 ${
                 isActive 
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20 scale-110' 
                   : 'text-slate-500 hover:bg-white/5 hover:text-blue-400'
               }`}
             >
-              <Icon size={16} />
+              <Icon size={14} />
               
               {/* Tooltip */}
               <div className="absolute left-full ml-3 px-2 py-1 bg-slate-900 text-white text-[9px] font-bold rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-200 translate-x-[-5px] group-hover:translate-x-0 whitespace-nowrap shadow-xl border border-white/10 z-[110]">
