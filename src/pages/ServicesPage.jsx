@@ -110,7 +110,7 @@ export const ServicesPage = () => {
       <motion.div 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-1.5 p-2.5 bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 max-h-[90vh] overflow-y-auto no-scrollbar"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col gap-1.5 p-2.5 bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 max-h-[90vh] overflow-y-auto no-scrollbar"
       >
         <div className="sticky top-0 bg-slate-900/90 backdrop-blur-xl z-10 pt-1">
           <div className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-400/60 mb-3 text-center">IT Services</div>
