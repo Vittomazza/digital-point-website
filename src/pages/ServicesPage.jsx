@@ -47,10 +47,10 @@ export const ServicesPage = () => {
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.3, delay: 0.05 }}
+                viewport={{ once: true, amount: 0.2 }}
                 className={`flex flex-col lg:flex-row items-center gap-10 md:gap-16 py-12 md:py-16 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} border-b border-slate-200 last:border-b-0`}
               >
                 <div className="lg:w-1/2">
@@ -71,9 +71,9 @@ export const ServicesPage = () => {
                     {service.features.map((feature, idx) => (
                       <motion.li
                         key={idx}
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: index * 0.1 + idx * 0.05 }}
+                        transition={{ duration: 0.2, delay: idx * 0.03 }}
                         viewport={{ once: true }}
                         className="flex items-center text-md"
                       >
@@ -84,13 +84,12 @@ export const ServicesPage = () => {
                   </ul>
                 </div>
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   className="lg:w-1/2 flex justify-center p-6"
                 >
-                  {/* Placeholder for service image/illustration */}
                   <div className="w-64 h-64 bg-blue-200 rounded-full flex items-center justify-center text-blue-700 text-6xl font-bold opacity-70">
                     {service.id}
                   </div>
