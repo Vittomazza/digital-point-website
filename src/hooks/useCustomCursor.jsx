@@ -65,4 +65,7 @@ export const useCustomCursor = () => {
   }, []);
 
   return { cursorRef, cursorDotRef };
+  
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  if (isMobile) return null;
 };
