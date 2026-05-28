@@ -70,7 +70,7 @@ export const ServicesPage = () => {
   const scrollToService = (id) => {
     const el = document.getElementById(`service-${id}`);
     if (el) {
-      const offset = 100;
+      const offset = 120; // Increased offset for better visibility
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = el.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -110,9 +110,9 @@ export const ServicesPage = () => {
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-3 p-3 bg-white/80 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-1.5 p-2 bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100"
       >
-        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-2 px-2">Navigation</div>
+        <div className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1 px-2">Services</div>
         {mockData.services.map((service) => {
           const Icon = iconMap[service.icon] || Server;
           const isActive = activeService === service.id;
@@ -120,16 +120,16 @@ export const ServicesPage = () => {
             <button
               key={service.id}
               onClick={() => scrollToService(service.id)}
-              className={`group relative flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-300 ${
+              className={`group relative flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 ${
                 isActive 
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20 scale-110' 
                   : 'text-slate-400 hover:bg-slate-50 hover:text-blue-600'
               }`}
             >
-              <Icon size={20} className={isActive ? "animate-spin-slow" : ""} />
+              <Icon size={16} className={isActive ? "animate-spin-slow" : ""} />
               
               {/* Tooltip */}
-              <div className="absolute left-full ml-4 px-3 py-2 bg-slate-950 text-white text-xs font-bold rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">
+              <div className="absolute left-full ml-4 px-3 py-2 bg-slate-950 text-white text-[10px] font-bold rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">
                 {service.title}
                 <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-slate-950"></div>
               </div>
@@ -196,7 +196,7 @@ export const ServicesPage = () => {
               <div 
                 key={service.id} 
                 id={`service-${service.id}`}
-                className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-32 mb-40 last:mb-0 ${!isEven ? 'lg:flex-row-reverse' : ''}`}
+                className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-32 mb-56 last:mb-0 ${!isEven ? 'lg:flex-row-reverse' : ''} scroll-mt-32`}
               >
                 {/* Visual Side */}
                 <motion.div 
