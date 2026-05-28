@@ -10,21 +10,28 @@ export const useCustomCursor = () => {
 
     if (!cursor || !cursorDot) return;
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+
+    let rafId;
+
+    // posizione iniziale
+    cursor.style.left = `${cursorX}px`;
+    cursor.style.top = `${cursorY}px`;
+
+    cursorDot.style.left = `${mouseX}px`;
+    cursorDot.style.top = `${mouseY}px`;
 
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
-      // Aggiorna il punto del cursore immediatamente
-      cursorDot.style.left = mouseX + 'px';
-      cursorDot.style.top = mouseY + 'px';
-    };
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
 
-    const handleMouseEnter = () => {
       cursor.style.opacity = '1';
       cursorDot.style.opacity = '1';
     };
@@ -35,27 +42,25 @@ export const useCustomCursor = () => {
     };
 
     const animate = () => {
-      // Animazione fluida del cursore principale
-      cursorX += (mouseX - cursorX) * 0.2;
-      cursorY += (mouseY - cursorY) * 0.2;
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
 
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
+      cursor.style.left = `${cursorX}px`;
+      cursor.style.top = `${cursorY}px`;
 
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
 
+    rafId = requestAnimationFrame(animate);
+
     document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseleave', handleMouseLeave);
 
-    const animationId = requestAnimationFrame(animate);
-
     return () => {
+      cancelAnimationFrame(rafId);
+
       document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
-      cancelAnimationFrame(animationId);
     };
   }, []);
 
