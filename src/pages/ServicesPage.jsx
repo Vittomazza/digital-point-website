@@ -26,14 +26,14 @@ const iconMap = {
 const BackgroundVisuals = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     {/* Mesh Gradient Effect */}
-    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15)_0%,transparent_50%)]"></div>
-    <div className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] bg-blue-600/20 blur-[120px] rounded-full"></div>
-    <div className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[70%] bg-blue-400/10 blur-[120px] rounded-full"></div>
+    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1)_0%,transparent_50%)]"></div>
+    <div className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] bg-blue-600/10 blur-[100px] rounded-full"></div>
+    <div className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[70%] bg-blue-400/5 blur-[100px] rounded-full"></div>
     
-    {[...Array(8)].map((_, i) => (
+    {[...Array(5)].map((_, i) => (
       <motion.div
         key={i}
-        className="absolute bg-white/5 backdrop-blur-3xl border border-white/10 rounded-2xl"
+        className="absolute bg-blue-500/5 border border-white/5 rounded-2xl"
         initial={{ 
           width: Math.random() * 100 + 50, 
           height: Math.random() * 100 + 50,
@@ -42,15 +42,13 @@ const BackgroundVisuals = () => (
           rotate: Math.random() * 360
         }}
         animate={{ 
-          y: [0, Math.random() * 100 - 50, 0],
-          rotate: [0, 10, -10, 0],
-          scale: [1, 1.05, 0.95, 1],
+          y: [0, 30, 0],
+          rotate: [0, 5, -5, 0],
         }}
         transition={{ 
-          duration: Math.random() * 15 + 15, 
+          duration: 20 + i * 2, 
           repeat: Infinity, 
           ease: "linear",
-          delay: i * 1.5
         }}
       />
     ))}
@@ -70,14 +68,10 @@ export const ServicesPage = () => {
   const scrollToService = (id) => {
     const el = document.getElementById(`service-${id}`);
     if (el) {
-      const offset = 120; // Increased offset for better visibility
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = el.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
+      const offset = 100;
+      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
-        top: offsetPosition,
+        top: elementPosition - offset,
         behavior: 'smooth'
       });
     }
@@ -85,36 +79,34 @@ export const ServicesPage = () => {
 
   // Observe which service is in view
   React.useEffect(() => {
-    const observers = [];
-    mockData.services.forEach((service) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveService(service.id);
+            setActiveService(parseInt(entry.target.id.split('-')[1]));
           }
-        },
-        { threshold: 0.5 }
-      );
-      
+        });
+      },
+      { threshold: 0.3, rootMargin: "-10% 0% -70% 0%" }
+    );
+    
+    mockData.services.forEach((service) => {
       const el = document.getElementById(`service-${service.id}`);
       if (el) observer.observe(el);
-      observers.push(observer);
     });
 
-    return () => observers.forEach(o => o.disconnect());
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Floating Side Menu */}
       <motion.div 
-        initial={{ opacity: 0, x: -30 }}
+        initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-4 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col gap-1.5 p-2.5 bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 max-h-[90vh] overflow-y-auto no-scrollbar"
+        className="fixed left-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-1 p-2 bg-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 rounded-2xl max-h-[80vh] overflow-y-auto no-scrollbar"
       >
-        <div className="sticky top-0 bg-slate-900/90 backdrop-blur-xl z-10 pt-1">
-          <div className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-400/60 mb-3 text-center">IT Services</div>
-        </div>
+        <div className="text-[8px] font-black uppercase tracking-[0.2em] text-blue-400/50 mb-2 text-center pt-1 border-b border-white/5 pb-2">Services</div>
         {mockData.services.map((service) => {
           const Icon = iconMap[service.icon] || Server;
           const isActive = activeService === service.id;
@@ -122,18 +114,17 @@ export const ServicesPage = () => {
             <button
               key={service.id}
               onClick={() => scrollToService(service.id)}
-              className={`group relative flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-500 shrink-0 ${
+              className={`group relative flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 shrink-0 ${
                 isActive 
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/40 scale-110' 
-                  : 'text-slate-400 hover:bg-white/5 hover:text-blue-400'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' 
+                  : 'text-slate-500 hover:bg-white/5 hover:text-blue-400'
               }`}
             >
-              <Icon size={20} className={isActive ? "animate-spin-slow" : ""} />
+              <Icon size={18} />
               
               {/* Tooltip */}
-              <div className="absolute left-full ml-4 px-4 py-2.5 bg-slate-900 text-white text-xs font-black rounded-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0 whitespace-nowrap shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-white/10 z-[60]">
+              <div className="absolute left-full ml-4 px-3 py-2 bg-slate-900 text-white text-[10px] font-bold rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-200 translate-x-[-10px] group-hover:translate-x-0 whitespace-nowrap shadow-xl border border-white/10 z-[110]">
                 {service.title}
-                <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-slate-900"></div>
               </div>
             </button>
           );
