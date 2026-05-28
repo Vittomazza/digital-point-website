@@ -6,7 +6,7 @@ import {
   LayoutDashboard, ShieldCheck, Globe, Building2, Recycle, 
   Fingerprint, Settings, ArrowRight, Sparkles
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const iconMap = {
   'life-buoy': Settings,
@@ -58,6 +58,14 @@ const BackgroundVisuals = () => (
 );
 
 export const ServicesPage = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    sessionStorage.setItem("scrollTo", "contatti");
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -206,13 +214,13 @@ export const ServicesPage = () => {
                   </div>
                   
                   <div className="pt-4">
-                    <Link 
-                      to="/#contatti" 
+                    <button 
+                      onClick={handleContactClick}
                       className="inline-flex items-center px-8 py-4 bg-slate-950 text-white font-bold rounded-2xl hover:bg-blue-600 transition-all duration-500 group shadow-lg hover:shadow-blue-500/20"
                     >
                       Configura la tua soluzione
                       <ArrowRight className="ml-3 group-hover:translate-x-2 transition-transform duration-500" size={24} />
-                    </Link>
+                    </button>
                   </div>
                 </motion.div>
               </div>
@@ -247,13 +255,13 @@ export const ServicesPage = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Link
-                  to="/#contatti"
+                <button
+                  onClick={handleContactClick}
                   className="inline-flex items-center justify-center px-10 py-6 bg-blue-600 text-white font-black text-lg rounded-2xl hover:bg-blue-500 transition-all shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] hover:shadow-[0_25px_50px_-12px_rgba(37,99,235,0.6)] hover:-translate-y-2"
                 >
                   Inizia il tuo Progetto
                   <Sparkles className="ml-3" size={24} />
-                </Link>
+                </button>
                 <Link
                   to="/#chi-siamo"
                   className="inline-flex items-center justify-center px-10 py-6 bg-white/5 border border-white/10 text-white font-black text-lg rounded-2xl hover:bg-white/10 backdrop-blur-md transition-all hover:-translate-y-2"
