@@ -108,11 +108,11 @@ export const ServicesPage = () => {
     <div className="min-h-screen bg-white">
       {/* Floating Side Menu */}
       <motion.div 
-        initial={{ opacity: 0, x: -20 }}
+        initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-4 top-[45%] -translate-y-1/2 z-40 hidden xl:flex flex-col gap-1 p-1.5 bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-1 p-2 bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 max-h-[85vh] overflow-y-auto no-scrollbar"
       >
-        <div className="text-[7px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1 px-2">Services</div>
+        <div className="text-[7px] font-black uppercase tracking-[0.2em] text-blue-400/60 mb-2 text-center pt-1">IT Services</div>
         {mockData.services.map((service) => {
           const Icon = iconMap[service.icon] || Server;
           const isActive = activeService === service.id;
@@ -120,18 +120,18 @@ export const ServicesPage = () => {
             <button
               key={service.id}
               onClick={() => scrollToService(service.id)}
-              className={`group relative flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-300 ${
+              className={`group relative flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-500 ${
                 isActive 
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20 scale-110' 
-                  : 'text-slate-400 hover:bg-slate-50 hover:text-blue-600'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/40 scale-110' 
+                  : 'text-slate-400 hover:bg-white/5 hover:text-blue-400'
               }`}
             >
-              <Icon size={16} className={isActive ? "animate-spin-slow" : ""} />
+              <Icon size={18} className={isActive ? "animate-spin-slow" : ""} />
               
               {/* Tooltip */}
-              <div className="absolute left-full ml-4 px-3 py-2 bg-slate-950 text-white text-[10px] font-bold rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">
+              <div className="absolute left-full ml-4 px-3 py-2 bg-slate-900 text-white text-[10px] font-black rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0 whitespace-nowrap shadow-2xl border border-white/10">
                 {service.title}
-                <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-slate-950"></div>
+                <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-slate-900"></div>
               </div>
             </button>
           );

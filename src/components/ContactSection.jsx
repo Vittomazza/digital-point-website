@@ -103,21 +103,25 @@ export const ContactSection = () => {
                   href={info.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: index * 0.1,
+                    ease: [0.16, 1, 0.3, 1] 
+                  }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-blue-200 group"
                 >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                    <Icon className="text-blue-600 group-hover:text-white transition-colors duration-300" size={24} />
+                <div className="flex items-center mb-6">
+                  <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 transition-all duration-500 shadow-inner">
+                    <Icon className="text-blue-600 group-hover:text-white transition-colors duration-500" size={28} />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                <h3 className="text-2xl font-black text-slate-900 mb-2 tracking-tight">
                   {info.label}
                 </h3>
-                <p className="text-slate-600 group-hover:text-blue-600 transition-colors duration-300">
+                <p className="text-slate-600 font-medium group-hover:text-blue-600 transition-colors duration-500 text-lg">
                   {info.value}
                 </p>
               </motion.a>
