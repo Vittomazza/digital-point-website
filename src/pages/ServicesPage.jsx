@@ -110,9 +110,9 @@ export const ServicesPage = () => {
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-1.5 p-2 bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100"
+        className="fixed left-4 top-[45%] -translate-y-1/2 z-40 hidden xl:flex flex-col gap-1 p-1.5 bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-100"
       >
-        <div className="text-[8px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1 px-2">Services</div>
+        <div className="text-[7px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1 px-2">Services</div>
         {mockData.services.map((service) => {
           const Icon = iconMap[service.icon] || Server;
           const isActive = activeService === service.id;

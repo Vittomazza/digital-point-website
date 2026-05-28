@@ -59,7 +59,7 @@ export const Header = () => {
     { label: 'Contatti', id: 'contatti' }
   ];
 
-  const isDarkHero = location.pathname === '/servizi' && !isScrolled;
+  const isDarkHero = (location.pathname === '/servizi' || location.pathname === '/') && !isScrolled;
 
   return (
     <header
