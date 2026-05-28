@@ -196,8 +196,8 @@ export const ServicesPage = () => {
                 <motion.div 
                   initial={{ opacity: 0, x: isEven ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                   viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                   className="w-full lg:w-1/2"
                 >
                   <div className="relative group">
@@ -266,6 +266,7 @@ export const ServicesPage = () => {
                         key={idx} 
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.2 + idx * 0.1 }}
                         className="flex items-center p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-lg hover:border-blue-100 transition-all duration-300 group/item"
                       >
