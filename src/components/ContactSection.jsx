@@ -99,14 +99,16 @@ export const ContactSection = () => {
             const Icon = info.icon;
             return (
               <motion.a
-                key={index}
-                href={info.href}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
+                  key={index}
+                  href={info.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+                >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
                     <Icon className="text-blue-600 group-hover:text-white transition-colors duration-300" size={24} />
