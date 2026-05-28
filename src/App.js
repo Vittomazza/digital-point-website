@@ -11,6 +11,10 @@ import { Toaster } from "sonner";
 import { ServicesPage } from "./pages/ServicesPage";
 import { CustomCursor } from "./components/CustomCursor";
 import ScrollToTop from "./components/ScrollToTop";
+import { CookieBanner } from "./components/CookieBanner";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { CookiePolicy } from "./pages/CookiePolicy";
+import { Terms } from "./pages/Terms";
 
 function App() {
   return (
@@ -20,6 +24,13 @@ function App() {
         <Header />
 
         <ScrollToTop />
+
+        <Router>
+  <div className="App">
+    <CustomCursor />
+    <Header />
+
+    <ScrollToTop />
 
         <Routes>
           <Route
@@ -33,8 +44,18 @@ function App() {
               </main>
             }
           />
+
           <Route path="/servizi" element={<ServicesPage />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/cookie" element={<CookiePolicy />} />
+          <Route path="/termini" element={<Terms />} />
         </Routes>
+
+            <Footer />
+            <CookieBanner />
+            <Toaster />
+          </div>
+        </Router>
 
         <Footer />
         <Toaster />
