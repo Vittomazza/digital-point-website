@@ -100,29 +100,29 @@ export const ServicesPage = () => {
               >
                 {/* Visual Side */}
                 <motion.div 
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   viewport={{ once: true, margin: "-100px" }}
                   className="w-full lg:w-1/2"
                 >
                   <div className="relative group">
-                    {/* Decorative Background */}
-                    <div className={`absolute -inset-4 rounded-3xl bg-gradient-to-br ${isEven ? 'from-blue-50 to-slate-50' : 'from-slate-50 to-blue-50'} -z-10 transition-all duration-700 group-hover:bg-blue-100/30`}></div>
-                    
                     {/* Main Content Box */}
-                    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 p-8 md:p-12 flex flex-col items-center justify-center min-h-[350px] relative transition-transform duration-500 group-hover:-translate-y-2">
+                    <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 p-8 md:p-12 flex flex-col items-center justify-center min-h-[350px] relative transition-all duration-500 group-hover:shadow-2xl group-hover:border-blue-100">
+                      {/* Subtle Inner Glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                      
                       <motion.div 
-                        whileHover={{ scale: 1.02 }}
-                        transition={{ duration: 0.4 }}
-                        className="w-40 h-40 md:w-52 md:h-52 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl flex items-center justify-center text-white shadow-2xl relative z-10 mb-6"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        className="w-40 h-40 md:w-52 md:h-52 bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl flex items-center justify-center text-white shadow-lg relative z-10 mb-8"
                       >
                         <div className="absolute inset-0 bg-white/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <ServiceIcon size={80} strokeWidth={1.2} />
+                        <ServiceIcon size={84} strokeWidth={1.5} className="drop-shadow-lg" />
                       </motion.div>
                       
                       <div className="text-center relative z-10">
-                        <div className="w-16 h-1 bg-blue-500 mx-auto rounded-full transition-all duration-500 group-hover:w-24"></div>
+                        <div className="w-16 h-1 bg-blue-600/20 mx-auto rounded-full group-hover:bg-blue-600/40 transition-colors duration-500"></div>
                       </div>
                     </div>
                   </div>
