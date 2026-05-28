@@ -40,7 +40,7 @@ export const ServicesSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -62,8 +62,8 @@ export const ServicesSection = () => {
                 key={service.id}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 onHoverStart={() => setHoveredCard(service.id)}
                 onHoverEnd={() => setHoveredCard(null)}
                 className="group perspective-1000"
