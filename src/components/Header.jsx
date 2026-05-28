@@ -59,6 +59,8 @@ export const Header = () => {
     { label: 'Contatti', id: 'contatti' }
   ];
 
+  const isDarkHero = location.pathname === '/servizi' && !isScrolled;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -83,7 +85,7 @@ export const Header = () => {
               }
             }}
           >
-            <div className="text-2xl font-bold text-slate-900">
+            <div className={`text-2xl font-bold ${isDarkHero ? 'text-white' : 'text-slate-900'}`}>
               Digital <span className="text-blue-600">Point</span>
             </div>
           </motion.div>
@@ -97,10 +99,10 @@ export const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => handleNavigation(item)}
-                className="text-slate-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
+                className={`${isDarkHero ? 'text-white/90 hover:text-white' : 'text-slate-700 hover:text-blue-600'} font-medium transition-colors duration-200 relative group`}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${isDarkHero ? 'bg-white' : 'bg-blue-600'} transition-all duration-300 group-hover:w-full`}></span>
               </motion.button>
             ))}
           </nav>
@@ -114,7 +116,7 @@ export const Header = () => {
           >
             <Button
               onClick={handleContattaci}
-              className="bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200"
+              className={`${isDarkHero ? 'bg-white text-blue-600 hover:bg-slate-100' : 'bg-blue-600 hover:bg-blue-700 text-white'} transition-colors duration-200`}
             >
               Contattaci
             </Button>
@@ -122,7 +124,7 @@ export const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-slate-900 p-2"
+            className={`md:hidden ${isDarkHero ? 'text-white' : 'text-slate-900'} p-2`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >

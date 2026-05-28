@@ -111,20 +111,16 @@ export const ServicesPage = () => {
                     
                     {/* Main Content Box */}
                     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 p-8 md:p-12 flex flex-col items-center justify-center min-h-[350px] relative">
-                      <div className="absolute top-0 right-0 p-6 text-slate-100 font-bold text-9xl -z-0 opacity-50 select-none">
-                        {service.id < 10 ? `0${service.id}` : service.id}
-                      </div>
-                      
                       <motion.div 
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center text-white shadow-2xl relative z-10 mb-6"
+                        whileHover={{ scale: 1.05 }}
+                        className="w-40 h-40 md:w-52 md:h-52 bg-slate-50 rounded-3xl flex items-center justify-center text-blue-600 shadow-inner relative z-10 mb-6 border border-slate-100"
                       >
-                        <ServiceIcon size={64} strokeWidth={1.5} />
+                        <div className="absolute inset-0 bg-blue-500/5 rounded-3xl"></div>
+                        <ServiceIcon size={80} strokeWidth={1.2} />
                       </motion.div>
                       
                       <div className="text-center relative z-10">
-                        <h3 className="text-xl font-semibold text-slate-400 uppercase tracking-widest mb-2">Service Concept</h3>
-                        <div className="w-12 h-1 bg-blue-500 mx-auto rounded-full"></div>
+                        <div className="w-16 h-1 bg-blue-500 mx-auto rounded-full"></div>
                       </div>
                     </div>
                   </div>
