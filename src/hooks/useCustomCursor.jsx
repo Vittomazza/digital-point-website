@@ -5,6 +5,9 @@ export const useCustomCursor = () => {
   const cursorDotRef = useRef(null);
 
   useEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile) return;
+
     const cursor = cursorRef.current;
     const cursorDot = cursorDotRef.current;
 
@@ -18,7 +21,6 @@ export const useCustomCursor = () => {
 
     let rafId;
 
-    // posizione iniziale
     cursor.style.left = `${cursorX}px`;
     cursor.style.top = `${cursorY}px`;
 
@@ -58,14 +60,10 @@ export const useCustomCursor = () => {
 
     return () => {
       cancelAnimationFrame(rafId);
-
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
   return { cursorRef, cursorDotRef };
-  
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  if (isMobile) return null;
 };
