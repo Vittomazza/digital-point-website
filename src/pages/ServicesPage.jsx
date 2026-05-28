@@ -104,7 +104,7 @@ export const ServicesPage = () => {
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-8 top-[40%] -translate-y-1/2 z-[100] hidden md:flex flex-col gap-0.5 p-1.5 bg-slate-900 shadow-2xl border border-white/10 rounded-xl max-h-[80vh] overflow-y-auto no-scrollbar"
+        className="fixed left-8 top-[40%] -translate-y-1/2 z-[100] hidden md:flex flex-col gap-0.5 p-1.5 bg-slate-900 shadow-2xl border border-white/10 rounded-xl"
       >
         <div className="text-[7px] font-black uppercase tracking-[0.1em] text-blue-400/40 mb-1 text-center pt-1 border-b border-white/5 pb-1">Menu</div>
         {mockData.services.map((service) => {
