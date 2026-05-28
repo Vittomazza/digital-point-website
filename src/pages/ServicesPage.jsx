@@ -25,26 +25,27 @@ const iconMap = {
 
 const BackgroundBubbles = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {[...Array(6)].map((_, i) => (
+    {[...Array(5)].map((_, i) => (
       <motion.div
         key={i}
-        className="absolute rounded-full bg-white/10"
+        className="absolute rounded-full bg-blue-500/10 blur-xl"
         initial={{ 
-          width: Math.random() * 200 + 100, 
-          height: Math.random() * 200 + 100,
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          opacity: 0.1
+          width: 300, 
+          height: 300,
+          left: `${i * 25}%`,
+          top: `${(i % 3) * 30}%`,
+          opacity: 0.05
         }}
         animate={{ 
-          y: [0, Math.random() * 100 - 50],
-          x: [0, Math.random() * 100 - 50],
+          y: [0, 40, 0],
+          x: [0, 20, 0],
           scale: [1, 1.1, 1],
         }}
         transition={{ 
-          duration: Math.random() * 10 + 10, 
+          duration: 15, 
           repeat: Infinity, 
-          ease: "easeInOut" 
+          ease: "linear",
+          delay: i * 2
         }}
       />
     ))}
@@ -58,7 +59,7 @@ export const ServicesPage = () => {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.8 }}
         className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-slate-900 text-white overflow-hidden"
       >
         <BackgroundBubbles />
@@ -66,9 +67,9 @@ export const ServicesPage = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-blue-500/20 text-blue-400 text-sm font-semibold mb-4 tracking-wider uppercase">
+            <span className="inline-block py-1.5 px-4 rounded-full bg-blue-500/20 text-blue-400 text-sm font-semibold mb-6 tracking-wider uppercase border border-blue-500/30">
               Soluzioni Professionali
             </span>
             <h1 className="text-4xl md:text-7xl font-bold mb-6 tracking-tight">
@@ -99,28 +100,29 @@ export const ServicesPage = () => {
               >
                 {/* Visual Side */}
                 <motion.div 
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
                   viewport={{ once: true, margin: "-100px" }}
                   className="w-full lg:w-1/2"
                 >
                   <div className="relative group">
                     {/* Decorative Background */}
-                    <div className={`absolute -inset-4 rounded-3xl bg-gradient-to-br ${isEven ? 'from-blue-100 to-slate-50' : 'from-slate-50 to-blue-100'} -z-10 transition-transform duration-500 group-hover:scale-105`}></div>
+                    <div className={`absolute -inset-4 rounded-3xl bg-gradient-to-br ${isEven ? 'from-blue-50 to-slate-50' : 'from-slate-50 to-blue-50'} -z-10 transition-all duration-700 group-hover:bg-blue-100/30`}></div>
                     
                     {/* Main Content Box */}
-                    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 p-8 md:p-12 flex flex-col items-center justify-center min-h-[350px] relative">
+                    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 p-8 md:p-12 flex flex-col items-center justify-center min-h-[350px] relative transition-transform duration-500 group-hover:-translate-y-2">
                       <motion.div 
-                        whileHover={{ scale: 1.05 }}
-                        className="w-40 h-40 md:w-52 md:h-52 bg-slate-50 rounded-3xl flex items-center justify-center text-blue-600 shadow-inner relative z-10 mb-6 border border-slate-100"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.4 }}
+                        className="w-40 h-40 md:w-52 md:h-52 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl flex items-center justify-center text-white shadow-2xl relative z-10 mb-6"
                       >
-                        <div className="absolute inset-0 bg-blue-500/5 rounded-3xl"></div>
+                        <div className="absolute inset-0 bg-white/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <ServiceIcon size={80} strokeWidth={1.2} />
                       </motion.div>
                       
                       <div className="text-center relative z-10">
-                        <div className="w-16 h-1 bg-blue-500 mx-auto rounded-full"></div>
+                        <div className="w-16 h-1 bg-blue-500 mx-auto rounded-full transition-all duration-500 group-hover:w-24"></div>
                       </div>
                     </div>
                   </div>
@@ -128,15 +130,15 @@ export const ServicesPage = () => {
 
                 {/* Text Side */}
                 <motion.div 
-                  initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   className="w-full lg:w-1/2"
                 >
                   <div className="flex items-center mb-6">
-                    <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white mr-4 flex-shrink-0 shadow-lg">
-                      <ServiceIcon size={20} />
+                    <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white mr-5 flex-shrink-0 shadow-lg transition-transform duration-500 hover:rotate-6">
+                      <ServiceIcon size={24} />
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
                       {service.title}
