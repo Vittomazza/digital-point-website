@@ -123,8 +123,9 @@ export const ServicesPage = () => {
               <Icon size={14} />
               
               {/* Tooltip */}
-              <div className="absolute left-full ml-3 px-2 py-1 bg-slate-900 text-white text-[9px] font-bold rounded-md opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-200 translate-x-[-5px] group-hover:translate-x-0 whitespace-nowrap shadow-xl border border-white/10 z-[110]">
+              <div className="absolute left-full ml-4 px-3 py-2 bg-slate-900 text-white text-[11px] font-black rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0 whitespace-nowrap shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-white/20 z-[110]">
                 {service.title}
+                <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-slate-900"></div>
               </div>
             </button>
           );
