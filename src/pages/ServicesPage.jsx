@@ -110,9 +110,11 @@ export const ServicesPage = () => {
       <motion.div 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-1.5 p-2.5 bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-1.5 p-2.5 bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 max-h-[90vh] overflow-y-auto no-scrollbar"
       >
-        <div className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-400/60 mb-3 text-center pt-1">IT Services</div>
+        <div className="sticky top-0 bg-slate-900/90 backdrop-blur-xl z-10 pt-1">
+          <div className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-400/60 mb-3 text-center">IT Services</div>
+        </div>
         {mockData.services.map((service) => {
           const Icon = iconMap[service.icon] || Server;
           const isActive = activeService === service.id;
@@ -120,7 +122,7 @@ export const ServicesPage = () => {
             <button
               key={service.id}
               onClick={() => scrollToService(service.id)}
-              className={`group relative flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-500 ${
+              className={`group relative flex items-center justify-center w-11 h-11 rounded-xl transition-all duration-500 shrink-0 ${
                 isActive 
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/40 scale-110' 
                   : 'text-slate-400 hover:bg-white/5 hover:text-blue-400'
@@ -129,7 +131,7 @@ export const ServicesPage = () => {
               <Icon size={20} className={isActive ? "animate-spin-slow" : ""} />
               
               {/* Tooltip */}
-              <div className="absolute left-full ml-4 px-4 py-2.5 bg-slate-900 text-white text-xs font-bold rounded-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0 whitespace-nowrap shadow-2xl border border-white/10 z-50">
+              <div className="absolute left-full ml-4 px-4 py-2.5 bg-slate-900 text-white text-xs font-black rounded-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover:translate-x-0 whitespace-nowrap shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-white/10 z-[60]">
                 {service.title}
                 <div className="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-8 border-transparent border-r-slate-900"></div>
               </div>
