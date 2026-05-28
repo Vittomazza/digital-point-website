@@ -104,7 +104,7 @@ export const ServicesPage = () => {
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed left-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col gap-1 p-2 bg-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 rounded-2xl max-h-[80vh] overflow-y-auto no-scrollbar"
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col gap-1 p-2 bg-slate-900 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 rounded-2xl max-h-[85vh] overflow-y-auto no-scrollbar"
       >
         <div className="text-[8px] font-black uppercase tracking-[0.2em] text-blue-400/50 mb-2 text-center pt-1 border-b border-white/5 pb-2">Services</div>
         {mockData.services.map((service) => {
@@ -116,7 +116,7 @@ export const ServicesPage = () => {
               onClick={() => scrollToService(service.id)}
               className={`group relative flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 shrink-0 ${
                 isActive 
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' 
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20 scale-110' 
                   : 'text-slate-500 hover:bg-white/5 hover:text-blue-400'
               }`}
             >
