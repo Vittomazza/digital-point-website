@@ -72,7 +72,7 @@ export const ContactSection = () => {
       icon: MapPin,
       label: "Indirizzo",
       value: mockData.contact.address,
-      href: "#"
+      href: "https://maps.app.goo.gl/E92EnHX4cj98kp686"
     }
   ];
 
