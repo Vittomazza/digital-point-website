@@ -155,21 +155,30 @@ export const Footer = () => {
 
             <div className="flex space-x-6">
               <button
-                onClick={() => navigate('/privacy')}
+                onClick={() => {
+                  navigate('/privacy');
+                  window.scrollTo(0, 0);
+                }}
                 className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200"
               >
                 Privacy Policy
               </button>
 
               <button
-                onClick={() => navigate('/cookie')}
+                onClick={() => {
+                  navigate('/cookie');
+                  window.scrollTo(0, 0);
+                }}
                 className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200"
               >
                 Cookie Policy
               </button>
 
               <button
-                onClick={() => navigate('/termini')}
+                onClick={() => {
+                  navigate('/termini');
+                  window.scrollTo(0, 0);
+                }}
                 className="text-slate-500 hover:text-blue-400 text-sm transition-colors duration-200"
               >
                 Termini di Servizio

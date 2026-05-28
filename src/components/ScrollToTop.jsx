@@ -7,6 +7,10 @@ const ScrollToTop = () => {
   useEffect(() => {
     const id = sessionStorage.getItem("scrollTo");
     console.log("ScrollToTop - pathname:", location.pathname, "| id:", id);
+    
+    // Forza il reset in cima alla pagina ad ogni cambio di route
+    window.scrollTo(0, 0);
+
     if (id) {
       sessionStorage.removeItem("scrollTo");
       setTimeout(() => {
