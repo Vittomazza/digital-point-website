@@ -262,19 +262,15 @@ export const ServicesPage = () => {
                   
                   <div className="grid grid-cols-1 gap-5 mb-12">
                     {service.features.map((feature, idx) => (
-                      <motion.div 
+                      <div 
                         key={idx} 
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 + idx * 0.1 }}
                         className="flex items-center p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-lg hover:border-blue-100 transition-all duration-300 group/item"
                       >
                         <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mr-4 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors duration-300">
                           <CheckCircle size={20} />
                         </div>
                         <span className="text-slate-800 font-bold text-lg">{feature}</span>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                   

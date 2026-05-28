@@ -117,17 +117,13 @@ export const ServicesSection = () => {
                     {/* Features List (Show only first 2 for preview) */}
                     <ul className="space-y-3 relative z-10 mb-6">
                       {service.features.slice(0, 2).map((feature, idx) => (
-                        <motion.li
+                        <li
                           key={idx}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.3, delay: 0.5 + idx * 0.1 }}
                           className="flex items-start space-x-2"
                         >
                           <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" strokeWidth={2} />
                           <span className="text-slate-700 text-sm">{feature}</span>
-                        </motion.li>
+                        </li>
                       ))}
                     </ul>
 
