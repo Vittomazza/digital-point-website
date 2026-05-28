@@ -24,7 +24,7 @@ export const ServicesPage = () => {
       <motion.section
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
         className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20 md:py-24 overflow-hidden"
       >
         <div className="container mx-auto px-4 text-center relative z-10">
